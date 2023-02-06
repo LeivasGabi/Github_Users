@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.example.githubusers.R
 import com.example.githubusers.adapter.RepositoryListAdapter
 import com.example.githubusers.databinding.FragmentProfileBinding
 import com.example.githubusers.model.Repository
@@ -29,8 +31,8 @@ class ProfileFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    ): View {
+
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -41,7 +43,11 @@ class ProfileFragment : Fragment() {
     }
 
     private fun loadView() {
+
+        Glide.with(requireContext()).load(args.user?.avatarUrl).into(binding.imageView)
+
         binding.textViewName.text = args.user!!.name
+
         getData()
     }
 
@@ -49,6 +55,8 @@ class ProfileFragment : Fragment() {
         val retrofitBase = NetworkUtils.getRetrofitInstance()
         val endPointPath = retrofitBase.create(EndPointPath::class.java)
         val callback = endPointPath.getRepos(args.user!!.login)
+
+        val avatarImage = args.user?.avatarUrl?.let { endPointPath.getRepos(it) }
 
         callback.enqueue(object: Callback<List<Repository>> {
             override fun onFailure(call: Call<List<Repository>>, t: Throwable) {

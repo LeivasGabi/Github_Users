@@ -7,7 +7,7 @@ data class User(
     @SerializedName("login")
     var login: String,
     @SerializedName("avatar_url")
-    var avatarUrl: String,
+    var avatarUrl: String?,
     @SerializedName("repos_url")
     var reposUrl: String,
     @SerializedName("name")
