@@ -1,7 +1,9 @@
 package com.example.githubusers.adapter
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.githubusers.databinding.ResListItemBinding
 import com.example.githubusers.model.Repository
 
 class RepositoryListAdapter(
@@ -23,7 +25,6 @@ class RepositoryListAdapter(
     override fun getItemCount(): Int {
         return listRepository.size
     }
-
     class RepositoryViewHolder constructor(
         itemView: ResListItemBinding
     ) : RecyclerView.ViewHolder(itemView.root) {

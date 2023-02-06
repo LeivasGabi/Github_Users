@@ -11,7 +11,7 @@ data class User(
     @SerializedName("repos_url")
     var reposUrl: String,
     @SerializedName("name")
-    var name: String,
+    var name: String?,
     @SerializedName("public_repo")
     var publicRepos: Int
 ): Serializable

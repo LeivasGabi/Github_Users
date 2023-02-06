@@ -7,16 +7,21 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.githubusers.view.HomeFragment"
+        android:name="com.example.githubusers.view.SearchFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_search" >
         <action
             android:id="@+id/action_homeFragment_to_repositoryListFragment"
             app:destination="@id/repositoryListFragment" />
     </fragment>
     <fragment
         android:id="@+id/repositoryListFragment"
-        android:name="com.example.githubusers.view.RepositoryListFragment"
+        android:name="com.example.githubusers.view.ProfileFragment"
         android:label="fragment_repository_list"
-        tools:layout="@layout/fragment_repository_list" />
+        tools:layout="@layout/fragment_profile" >
+        <argument
+            android:name="user"
+            app:argType="com.example.githubusers.model.User"
+            app:nullable="true" />
+    </fragment>
 </navigation>
