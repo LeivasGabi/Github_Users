@@ -56,8 +56,6 @@ class ProfileFragment : Fragment() {
         val endPointPath = retrofitBase.create(EndPointPath::class.java)
         val callback = endPointPath.getRepos(args.user!!.login)
 
-        val avatarImage = args.user?.avatarUrl?.let { endPointPath.getRepos(it) }
-
         callback.enqueue(object: Callback<List<Repository>> {
             override fun onFailure(call: Call<List<Repository>>, t: Throwable) {
                 Toast.makeText(requireContext(), "Não funciona", Toast.LENGTH_LONG).show()
