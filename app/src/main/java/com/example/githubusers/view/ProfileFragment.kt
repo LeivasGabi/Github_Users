@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.example.githubusers.R
 import com.example.githubusers.adapter.RepositoryListAdapter
 import com.example.githubusers.databinding.FragmentProfileBinding
 import com.example.githubusers.model.Repository
@@ -43,11 +42,8 @@ class ProfileFragment : Fragment() {
     }
 
     private fun loadView() {
-
         Glide.with(requireContext()).load(args.user?.avatarUrl).into(binding.imageView)
-
         binding.textViewName.text = args.user!!.name
-
         getData()
     }
 
@@ -60,7 +56,6 @@ class ProfileFragment : Fragment() {
             override fun onFailure(call: Call<List<Repository>>, t: Throwable) {
                 Toast.makeText(requireContext(), "Não funciona", Toast.LENGTH_LONG).show()
             }
-
             override fun onResponse(call: Call<List<Repository>>, response: Response<List<Repository>>) {
                 response.body()?.let {
                     setAdapter(it)
